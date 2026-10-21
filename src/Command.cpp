@@ -12,9 +12,14 @@ EditorAction NormalModeParser::Feed(KeyEvent key) {
     if (key.code_ == KeyCode::Character) {
         auto value = key.value_;
         switch (value) {
-        //你需要填写这里
-        default:
-            break;
+            case 'h': return GenerateMotion(Motion::Left);
+            case 'l': return GenerateMotion(Motion::Right);
+            case 'j': return GenerateMotion(Motion::Down);
+            case 'k': return GenerateMotion(Motion::Up);
+            case 'i': return GenerateCommand(ActionKind::InsertBefore);
+            case 'a': return GenerateCommand(ActionKind::InsertAfter);
+            case ':': return GenerateCommand(ActionKind::EnterCommandLine);
+            default: break;
         }
         return {};
     }
